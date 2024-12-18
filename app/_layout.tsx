@@ -8,7 +8,6 @@ import 'react-native-reanimated';
 
 import { useColorScheme } from '@/hooks/useColorScheme';
 
-// Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
@@ -31,9 +30,51 @@ export default function RootLayout() {
     <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
       <Stack>
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="+not-found" />
+        <Stack.Screen 
+          name="users/create" 
+          options={{ 
+            title: 'Crear Usuario',
+            presentation: 'modal'
+          }} 
+        />
+        <Stack.Screen 
+          name="users/[id]" 
+          options={{ 
+            title: 'Editar Usuario',
+            presentation: 'modal'
+          }} 
+        />
+        <Stack.Screen 
+          name="units/create" 
+          options={{ 
+            title: 'Crear Vehículo',
+            presentation: 'modal'
+          }} 
+        />
+        <Stack.Screen 
+          name="units/[id]" 
+          options={{ 
+            title: 'Editar Vehículo',
+            presentation: 'modal'
+          }} 
+        />
+        <Stack.Screen 
+          name="places/create" 
+          options={{ 
+            title: 'Crear Lugar',
+            presentation: 'modal'
+          }} 
+        />
+        <Stack.Screen 
+          name="places/[id]" 
+          options={{ 
+            title: 'Editar Lugar',
+            presentation: 'modal'
+          }} 
+        />
+        <Stack.Screen name="+not-found" options={{ title: 'Oops!' }} />
       </Stack>
-      <StatusBar style="auto" />
+      <StatusBar style={colorScheme === 'dark' ? 'light' : 'dark'} />
     </ThemeProvider>
   );
 }
